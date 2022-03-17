@@ -12,10 +12,19 @@ const Clock = (props) => {
             <section>
               <p>{props.timer.days}</p>
               <small>Days</small>
+            </section>
+            <span>:</span>
+            <section>
                <p>{props.timer.hours}</p>
-              <small>Hours</small>
+              <small>Hours</small>{" "}
+            </section>
+            <span>:</span>
+            <section>
                <p>{props.timer.minutes}</p>
-              <small>Minutes</small>
+              <small>Minutes</small>{" "}
+            </section>
+            <span>:</span>
+            <section>
                <p>{props.timer.seconds}</p>
               <small>Seconds</small>
             </section>

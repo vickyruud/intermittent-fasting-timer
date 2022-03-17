@@ -5,10 +5,10 @@ import Clock from './components/Clock';
 function App() {
   
   const [state, setState] = useState({
-    Days: 10,
-    Hours:10,
-    Minutes:10,
-    Seconds:10
+    days: 10,
+    hours:10,
+    minutes:10,
+    seconds:10
   })
 
 
