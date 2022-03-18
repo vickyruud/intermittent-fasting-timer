@@ -9,6 +9,7 @@ const Clock = (props) => {
       <section className="timer-container">
         <section className="timer">
           <div className="clock">
+            {props.eatingWindow ? <small>Eating window</small> : <small>Fasting Window</small> }
            <section>
                <p>{props.timer.hours}</p>
               <small>Hours</small>{" "}

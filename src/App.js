@@ -5,12 +5,21 @@ import Clock from './components/Clock';
 function App() {
   
   const [state, setState] = useState({
-    hours:10,
-    minutes:10,
-    seconds: 10,
-    eatingWindow:false,
+    hours:0,
+    minutes:0,
+    seconds: 0,
     
   })
+
+  const[eatingWindow, setEatingWindow] = useState(false)
+
+  const handleEatingWindow = () => {
+    if (state.hours >= 10 && state.hours <= 18) {
+      setEatingWindow(true);
+    } else {
+      setEatingWindow(false);
+    }
+  }
 
 
 
@@ -19,20 +28,26 @@ function App() {
 
     const interval = setInterval(() => {
       const today = new Date()
-      if (today.getHours() >= 10 && today.getHours() <= 18) {
-      }
-      const hours = 24 - today.getHours()
-      const minutes = 60 - today.getHours();
+      const hours = 23 - today.getHours()
+      const minutes = 59 - today.getMinutes();
       const seconds = 60 - today.getSeconds();
 
+      if (!hours) {
+        //stop timer
+        clearInterval(interval.current)
+      } else {
+         //update timer 
+      setState({
+        ...state,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds
+      });
+      handleEatingWindow();
+
+      }
      
-        //update timer 
-        setState({
-          ...state,
-          hours: hours,
-          minutes: minutes,
-          seconds: seconds
-        })
+       
       
     })
 
@@ -44,7 +59,8 @@ function App() {
 
   return (
     <div className="App">
-      <Clock timer={state}/>
+      <Clock eatingWindow={eatingWindow} timer={state} />
+      <Clock eatingWindow={eatingWindow} timer={state} />
     </div>
   );
 }
