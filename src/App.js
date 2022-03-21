@@ -34,11 +34,11 @@ function App() {
       // let fastingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
       
       if (today.getHours() >= 18) {
-        today.setDate(today.getDate() + 1);
+        eatingTime.setDate(today.getDate() + 1);
       }
 
       eatingTime = eatingTime.getTime();
-      let diff = (((Date.now() - eatingTime) / 1000) | 0);
+      let diff = (((eatingTime - Date.now()) / 1000) | 0);
 
       const hours = (diff / 3600) | 0
       const minutes = ((diff % 3600) / 60) | 0
