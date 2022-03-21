@@ -32,7 +32,7 @@ function App() {
       const minutes = 59 - today.getMinutes();
       const seconds = 60 - today.getSeconds();
 
-      if (!hours) {
+      if (!today) {
         //stop timer
         clearInterval(interval.current)
       } else {
