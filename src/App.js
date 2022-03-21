@@ -30,9 +30,13 @@ function App() {
 
     const interval = setInterval(() => {
       const today = new Date()
-      const hours = 23 - today.getHours()
-      const minutes = 59 - today.getMinutes();
-      const seconds = 60 - today.getSeconds();
+      let eatingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10, 0, 0);
+      let fastingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
+      
+      console.log(eatingTime.getHours());
+      const hours = fastingTime.getHours()- eatingTime.getHours()
+      const minutes = fastingTime.getMinutes() - eatingTime.getMinutes();
+      const seconds = fastingTime.getSeconds() - eatingTime.getSeconds();
 
       if (!today) {
         //stop timer
