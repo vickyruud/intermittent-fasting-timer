@@ -8,6 +8,8 @@ function App() {
     hours:0,
     minutes:0,
     seconds: 0,
+    startEating: 0,
+    startFasting:0
     
   })
 
@@ -59,8 +61,7 @@ function App() {
 
   return (
     <div className="App">
-      <Clock eatingWindow={eatingWindow} timer={state} />
-      <Clock eatingWindow={eatingWindow} timer={state} />
+      {eatingWindow ? <Clock eatingWindow={true} timer={state} /> : <Clock eatingWindow={false} timer={state} /> }
     </div>
   );
 }
