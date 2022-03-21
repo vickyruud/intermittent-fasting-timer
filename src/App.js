@@ -16,7 +16,7 @@ function App() {
   const[eatingWindow, setEatingWindow] = useState(false)
 
   const handleEatingWindow = () => {
-    if (state.hours >= 10 && state.hours <= 18) {
+    if (state.hours >= 0 && state.hours <= 8) {
       setEatingWindow(true);
     } else {
       setEatingWindow(false);
@@ -30,13 +30,19 @@ function App() {
 
     const interval = setInterval(() => {
       const today = new Date()
-      let eatingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10, 0, 0);
-      let fastingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
+      let eatingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
+      // let fastingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
       
-      console.log(eatingTime.getHours());
-      const hours = fastingTime.getHours()- eatingTime.getHours()
-      const minutes = fastingTime.getMinutes() - eatingTime.getMinutes();
-      const seconds = fastingTime.getSeconds() - eatingTime.getSeconds();
+      if (today.getHours() >= 18) {
+        today.setDate(today.getDate() + 1);
+      }
+
+      eatingTime = eatingTime.getTime();
+      let diff = (((Date.now() - eatingTime) / 1000) | 0);
+
+      const hours = (diff / 3600) | 0
+      const minutes = ((diff % 3600) / 60) | 0
+      const seconds = (diff % 60) | 0
 
       if (!today) {
         //stop timer
@@ -65,7 +71,7 @@ function App() {
 
   return (
     <div className="App">
-      {eatingWindow ? <Clock eatingWindow={true} timer={state} /> : <Clock eatingWindow={false} timer={state} /> }
+      {eatingWindow ? <Clock message="Eat Now!" eatingWindow={true} timer={state} /> : <Clock message="Fast now!" eatingWindow={false} timer={state} /> }
     </div>
   );
 }
