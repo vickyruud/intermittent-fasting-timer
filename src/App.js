@@ -29,17 +29,18 @@ function App() {
   const startTimer = () => {
 
     const interval = setInterval(() => {
-      const today = new Date()
-      let eatingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
-      // let fastingTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
+      let today = new Date()
+      let eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
+      let eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
+      eatingTimeStart = eatingTimeStart.getTime();
+      eatingTimeEnd = eatingTimeEnd.getTime();
       
-      if (today.getHours() >= 18) {
-        eatingTime.setDate(today.getDate() + 1);
-      }
-
-      eatingTime = eatingTime.getTime();
-      let diff = (((eatingTime - Date.now()) / 1000) | 0);
-
+      let tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      let tomorrowEatingTimeStart = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 10);
+      tomorrowEatingTimeStart = tomorrowEatingTimeStart.getTime();
+      let diff = (((tomorrowEatingTimeStart - Date.now() ) / 1000) | 0);
+      
       const hours = (diff / 3600) | 0
       const minutes = ((diff % 3600) / 60) | 0
       const seconds = (diff % 60) | 0
