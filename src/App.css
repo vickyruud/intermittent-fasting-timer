@@ -22,7 +22,7 @@
   background: linear-gradient(270deg, #051817, #0e3839);
   height: 180px;
   width: 400px;
-  color: #06f1f6;
+  color: hsl(327, 95%, 49%);
   text-shadow: 1px 1px 7px;
   border-radius: 15px;
   border: 2px solid silver;
@@ -46,7 +46,7 @@
 }
 
 #message {
-  font-size: 90px;
+  font-size: 15px;
 }
 
 @media only screen and (max-width: 960px) {
