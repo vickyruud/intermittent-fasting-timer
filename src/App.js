@@ -21,10 +21,10 @@ function App() {
     let dateNow = new Date();
     let hoursNow = dateNow.getHours();
 
-    if (hoursNow  >= 21) {
-      setEatingWindow(true);
-    } else {
+    if (hoursNow  >= 18) {
       setEatingWindow(false);
+    } else {
+      setEatingWindow(true);
 
     }
     console.log(eatingWindow)
@@ -50,7 +50,7 @@ function App() {
     const interval = setInterval(() => {
       let today = new Date()
       eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
-      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 24, 0, 0);
+      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
       eatingTimeStart = eatingTimeStart.getTime();
       eatingTimeEnd = eatingTimeEnd.getTime();
       
