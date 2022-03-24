@@ -21,10 +21,10 @@ function App() {
     let dateNow = new Date();
     let hoursNow = dateNow.getHours();
 
-    if (hoursNow  >= 18) {
-      setEatingWindow(false);
-    } else {
+    if (hoursNow  >= 10 && hoursNow <= 18) {
       setEatingWindow(true);
+    } else {
+      setEatingWindow(false);
 
     }
     console.log(eatingWindow)
