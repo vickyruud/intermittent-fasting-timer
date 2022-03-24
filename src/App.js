@@ -13,13 +13,32 @@ function App() {
     
   })
 
-  const[eatingWindow, setEatingWindow] = useState(false)
+  const [eatingWindow, setEatingWindow] = useState(false)
+  
+  
 
   const handleEatingWindow = () => {
-    if (state.hours >= 0 && state.hours <= 8) {
+    let dateNow = new Date();
+    let hoursNow = dateNow.getHours();
+
+    if (hoursNow  >= 21) {
       setEatingWindow(true);
     } else {
       setEatingWindow(false);
+
+    }
+    console.log(eatingWindow)
+  }
+  let staticTime;
+  let eatingTimeEnd;
+  let tomorrowEatingTimeStart;
+  let eatingTimeStart
+
+  const handleStaticTime = (end , start) => {
+    if (eatingWindow === true) {
+      staticTime = end;
+    } else {
+      staticTime = start;
     }
   }
 
@@ -30,16 +49,18 @@ function App() {
 
     const interval = setInterval(() => {
       let today = new Date()
-      let eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
-      let eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
+      eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
+      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 24, 0, 0);
       eatingTimeStart = eatingTimeStart.getTime();
       eatingTimeEnd = eatingTimeEnd.getTime();
       
       let tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1)
-      let tomorrowEatingTimeStart = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 10);
+      tomorrowEatingTimeStart = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 10);
       tomorrowEatingTimeStart = tomorrowEatingTimeStart.getTime();
-      let diff = (((tomorrowEatingTimeStart - Date.now() ) / 1000) | 0);
+      
+      handleStaticTime(eatingTimeEnd, tomorrowEatingTimeStart);
+      let diff = (((staticTime - Date.now()) / 1000) | 0);
       
       const hours = (diff / 3600) | 0
       const minutes = ((diff % 3600) / 60) | 0
