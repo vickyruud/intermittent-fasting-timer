@@ -45,6 +45,10 @@
   text-shadow: none;
 }
 
+#message {
+  font-size: 90px;
+}
+
 @media only screen and (max-width: 960px) {
   .clock {
     height: 100px;
