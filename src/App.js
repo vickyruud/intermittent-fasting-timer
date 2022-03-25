@@ -53,9 +53,18 @@ function App() {
       eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
       eatingTimeStart = eatingTimeStart.getTime();
       eatingTimeEnd = eatingTimeEnd.getTime();
-      
+
       let tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1)
+
+      let dateNow = new Date();
+      let hoursNow = dateNow.getHours();
+
+      if (hoursNow >= 18 && hoursNow <= 23) {
+        tomorrow.setDate(tomorrow.getDate() + 1)
+
+      } else {
+        tomorrow.setDate(tomorrow.getDate())
+      }
       tomorrowEatingTimeStart = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 10);
       tomorrowEatingTimeStart = tomorrowEatingTimeStart.getTime();
       
