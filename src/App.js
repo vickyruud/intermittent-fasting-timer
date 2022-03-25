@@ -42,7 +42,9 @@ function App() {
     }
   }
 
-
+   function refreshPage() {
+    window.location.reload(true);
+  }
 
 
   const startTimer = () => {
@@ -64,6 +66,10 @@ function App() {
 
       } else {
         tomorrow.setDate(tomorrow.getDate())
+      }
+
+      if (hoursNow === 18 || hoursNow === 0 || hoursNow === 10) {
+        refreshPage();
       }
       tomorrowEatingTimeStart = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 10);
       tomorrowEatingTimeStart = tomorrowEatingTimeStart.getTime();
