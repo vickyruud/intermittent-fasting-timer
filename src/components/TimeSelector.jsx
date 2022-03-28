@@ -1,11 +1,8 @@
-import React from 'react';
-import { TimePicker } from '@material-ui/pickers';
+import React from 'react'
 
 const TimeSelector = () => {
   return (
-    <div>
-      <TimePicker ampm = {false}/>
-    </div>
+    <div className='time-selector'>TimeSelector</div>
   )
 }
 

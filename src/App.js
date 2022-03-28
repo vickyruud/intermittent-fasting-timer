@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Clock from './components/Clock';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TimeSelector from './components/TimeSelector';
 
 function App() {
@@ -28,7 +30,6 @@ function App() {
       setEatingWindow(false);
 
     }
-    console.log(eatingWindow)
   }
   let staticTime;
   let eatingTimeEnd;
@@ -108,9 +109,12 @@ function App() {
   })
 
   return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
     <div className="App">
       {eatingWindow ? <Clock message="Eat Now!" eatingWindow={true} timer={state} /> : <Clock message="Fast now!" eatingWindow={false} timer={state} /> }
+      <TimeSelector />
     </div>
+    </LocalizationProvider>
   );
 }
 
