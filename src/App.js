@@ -112,7 +112,10 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
     <div className="App">
       {eatingWindow ? <Clock message="Eat Now!" eatingWindow={true} timer={state} /> : <Clock message="Fast now!" eatingWindow={false} timer={state} /> }
-      <TimeSelector />
+      <div className='time-range'>
+        <TimeSelector label="Start" /> <TimeSelector label="End" />
+          
+      </div>
     </div>
     </LocalizationProvider>
   );

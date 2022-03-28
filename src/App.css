@@ -4,16 +4,13 @@
 }
 
 .App {
-  background-color: #282c34;
+  background-color: #818386;
   text-align: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-.time-selector {
-  color: white;
 }
 
 .clock {
@@ -46,6 +43,14 @@
 .clock section small {
   color: silver;
   text-shadow: none;
+}
+.time-range {
+  width: 50vh;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #message {
