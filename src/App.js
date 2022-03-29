@@ -3,7 +3,6 @@ import './App.css';
 import Clock from './components/Clock';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import TimeSelector from './components/TimeSelector';
 
 function App() {
   
@@ -11,10 +10,11 @@ function App() {
     hours:0,
     minutes:0,
     seconds: 0,
-    startEating: 0,
-    startFasting:0
+    startEating: 10,
+    startFasting:18
     
   })
+
 
   const [eatingWindow, setEatingWindow] = useState(false)
   
@@ -53,8 +53,8 @@ function App() {
 
     const interval = setInterval(() => {
       let today = new Date()
-      eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10);
-      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0);
+      eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), state.startEating);
+      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), state.startFasting, 0, 0);
       eatingTimeStart = eatingTimeStart.getTime();
       eatingTimeEnd = eatingTimeEnd.getTime();
 
@@ -112,10 +112,7 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
     <div className="App">
       {eatingWindow ? <Clock message="Eat Now!" eatingWindow={true} timer={state} /> : <Clock message="Fast now!" eatingWindow={false} timer={state} /> }
-      <div className='time-range'>
-        <TimeSelector label="Start" /> <TimeSelector label="End" />
           
-      </div>
     </div>
     </LocalizationProvider>
   );

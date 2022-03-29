@@ -6,7 +6,8 @@ import TimePicker from '@mui/lab/TimePicker';
 
 const TimeSelector = (props) => {
 
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState('');
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <div id='time-picker'>
@@ -16,7 +17,9 @@ const TimeSelector = (props) => {
           value={value}
           ampm={false}
           onChange={(newValue) => {
-            setValue(newValue);
+            setValue(newValue); 
+            console.log(newValue);
+            props.onClick(newValue);
           }}
           renderInput={(params) => <TextField {...params} />}
         />
