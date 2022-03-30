@@ -1,27 +1,35 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Clock from './components/Clock';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import TimeSelectorHours from './components/TimeSelectorHours';
 
 function App() {
   
   const [state, setState] = useState({
-    hours:0,
-    minutes:0,
-    seconds: 0,
+    
     startEating: 10,
     startEatingMins:0,
     startFasting: 18,
-    startFastingMins:0
-    
-    
+    startFastingMins:0    
   })
 
 
   const [eatingWindow, setEatingWindow] = useState(false)
   
+  const changeEatingWindowHours = (hours, minutes) => {
+    setState({
+      ...state,
+      startEating: hours,
+    })
+  }
+  const changeEatingWindowMinutes = (hours, minutes) => {
+    setState({
+      ...state,
+      startEatingMins:minutes
+    })
+  }
   
+
 
   const handleEatingWindow = () => {
     let dateNow = new Date();
@@ -112,12 +120,12 @@ function App() {
   })
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
     <div className="App">
+      <div className='time-select'>
+        <TimeSelectorHours hours={state.startEating} minutes={state.startEatingMins} changeHours={changeEatingWindowHours} changeMinutes={changeEatingWindowMinutes}/>
+      </div>
       {eatingWindow ? <Clock message="Eat Now!" eatingWindow={true} timer={state} /> : <Clock message="Fast now!" eatingWindow={false} timer={state} /> }
-          
     </div>
-    </LocalizationProvider>
   );
 }
 

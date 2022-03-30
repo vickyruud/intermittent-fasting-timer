@@ -12,6 +12,11 @@
   justify-content: space-around;
   align-items: center;
 }
+.time-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .clock {
   position: relative;
