@@ -11,7 +11,10 @@ function App() {
     minutes:0,
     seconds: 0,
     startEating: 10,
-    startFasting:18
+    startEatingMins:0,
+    startFasting: 18,
+    startFastingMins:0
+    
     
   })
 
@@ -53,8 +56,8 @@ function App() {
 
     const interval = setInterval(() => {
       let today = new Date()
-      eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), state.startEating);
-      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), state.startFasting, 0, 0);
+      eatingTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), state.startEating, state.startEatingMins, 0);
+      eatingTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), state.startFasting, state.startFastingMins, 0);
       eatingTimeStart = eatingTimeStart.getTime();
       eatingTimeEnd = eatingTimeEnd.getTime();
 
