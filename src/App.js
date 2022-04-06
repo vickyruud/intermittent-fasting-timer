@@ -31,7 +31,7 @@ function App() {
   }
   
 
-
+  // switches eating window is open or closed
   const handleEatingWindow = () => {
     let dateNow = new Date();
     let hoursNow = dateNow.getHours();
