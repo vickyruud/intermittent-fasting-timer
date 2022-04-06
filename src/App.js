@@ -16,6 +16,7 @@ function App() {
 
   const [eatingWindow, setEatingWindow] = useState(false)
   
+  //changes the eating window hours
   const changeEatingWindowHours = (hours, minutes) => {
     setState({
       ...state,
